@@ -149,43 +149,6 @@ body {
   transition-duration: 1000ms;
 }
 
-/* Увеличение размеров пузыря */
-.grow {
-  -webkit-transition-property: padding;
-  -o-transition-property: padding;
-  transition-property: padding;
-}
-
-/* Поднятие пузыря наверх */
-.up {
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
-  -o-transition-property: transform;
-  transition-property: transform;
-  transition-property: transform, -webkit-transform;
-}
-
-/* Перемещение пузыря вправо */
-.rigth {
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
-  -o-transition-property: transform;
-  transition-property: transform;
-  transition-property: transform, -webkit-transform;
-}
-
-/* Уменьшение и перемещение пузыря вниз */
-.down {
-  -webkit-transition-property: padding;
-  -o-transition-property: padding;
-  transition-property: padding;
-  -webkit-transition-property: -webkit-transform;
-  transition-property: -webkit-transform;
-  -o-transition-property: transform;
-  transition-property: transform;
-  transition-property: transform, -webkit-transform;
-}
-
 /* Число внутри пузыря */
 .number {
   z-index: -1;
@@ -217,7 +180,7 @@ body {
 /* Кнопка для запуска алгоритма */
 .start,
 .start-disabled {
-  width: 100px;
+  width: 140px;
   height: 50px;
   background: transparent;
   border-radius: 10px;
@@ -255,7 +218,7 @@ body {
 
 /* Общий класс кнопка для кнопок-скоростей анимации */
 .btn {
-  width: 120px;
+  width: 150px;
   display: block;
   font-size: 25px;
   font-weight: 400;

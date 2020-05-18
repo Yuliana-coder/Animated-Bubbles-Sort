@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Блок, заполненный окружностями с числами для сортировки
-  const MAIN = document.querySelector(".main");
+  const MAINBLOCK = document.querySelector(".main");
   // Кнопка запуска алгоритма
   let buttonStartSort = document.querySelector(".start");
   // Значение скорости по умолчанию (на анимацию 500ms)
@@ -20,11 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Длина массива целых чисел
   const LENGTHARRAY = 15;
 
+  function refreshPage() {
+    window.location.reload();
+    buttonStartSort.innerHTML = "Запуск";
+  }
+
   /**
    * Функция-конструктор
    * Генерирование массива, отрисовка элементов-пузырей
    */
   function createAndRenderBubbleList() {
+    buttonStartSort.removeEventListener("click", refreshPage);
     // Блок с информацией и инструкцией
     const INFOBLOCK = document.querySelector(".info");
     // Кнопки-режимы скоростей
@@ -87,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function createBubble(num) {
     let bubble = document.createElement("div");
     bubble.classList.add("bubble");
-    MAIN.append(bubble);
+    MAINBLOCK.append(bubble);
     bubble.innerHTML = `<span class="number">${num}</span>`;
   }
 
@@ -111,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   async function bubbleSort() {
     buttonStartSort.disabled = true;
+    buttonStartSort.removeEventListener("click", bubbleSort);
     buttonStartSort.classList.add("start-disabled");
 
     let arrayOfBubbles = [...document.querySelectorAll(".bubble")];
@@ -123,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
           array[j] = array[j + 1];
           array[j + 1] = largerValue;
           bubbleSwap(arrayOfBubbles[j], arrayOfBubbles[j + 1]);
-          await stop(time*3 + 100);
+          await stop(time * 3);
           let largerValue1 = arrayOfBubbles[j];
           arrayOfBubbles[j] = arrayOfBubbles[j + 1];
           arrayOfBubbles[j + 1] = largerValue1;
@@ -132,6 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     buttonStartSort.disabled = false;
     buttonStartSort.classList.remove("start-disabled");
+    buttonStartSort.innerHTML = "Обновить";
+    buttonStartSort.addEventListener("click", refreshPage);
   }
 
   /**
